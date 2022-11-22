@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="dataModel"
+            type="com.works.renta.data.database.model.DataModel" />
+    </data>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_period"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Период"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/txt"
+        app:layout_constraintTop_toBottomOf="@+id/txt_period"
+        android:text="Введите показания счетчиков:"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/txt_elect"
+        app:layout_constraintBaseline_toBaselineOf="@id/elect"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/elect"
+        android:text="Электричество:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/elect"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        app:IntToString="@={dataModel.elect}"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/txt"
+        app:layout_constraintStart_toEndOf="@+id/txt_elect"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txt_hw"
+        app:layout_constraintBaseline_toBaselineOf="@id/hotwater"
+        app:layout_constraintStart_toStartOf="@id/txt_elect"
+        android:text="Горячая вода:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/hotwater"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        app:IntToString="@={dataModel.hotwater}"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/elect"
+        app:layout_constraintStart_toEndOf="@+id/txt_elect"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txt_сw"
+        app:layout_constraintBaseline_toBaselineOf="@id/coldwater"
+        app:layout_constraintStart_toStartOf="@id/txt_elect"
+        android:text="Холодная вода:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/coldwater"
+        app:IntToString="@={dataModel.coldwater}"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/hotwater"
+        app:layout_constraintStart_toEndOf="@+id/txt_elect"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/summa"
+        app:layout_constraintTop_toBottomOf="@+id/coldwater"
+        app:layout_constraintStart_toStartOf="@id/txt_сw"
+        app:layout_constraintEnd_toEndOf="@+id/coldwater"
+        android:text="0.00"
+        android:textSize="24sp"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txt_culc"
+        app:layout_constraintTop_toBottomOf="@+id/summa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="24sp"
+        android:text=""
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="@id/clear"
+        app:layout_constraintEnd_toEndOf="@+id/tarifs"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/summa"
+        android:layout_marginTop="50dp"
+        android:text="Рассчитать"/>
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/calculate"
+        app:layout_constraintEnd_toStartOf="@+id/tarifs"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Удалить до"/>
+
+    <Button
+        android:id="@+id/tarifs"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/calculate"
+        app:layout_constraintStart_toEndOf="@+id/clear"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Тарифы"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

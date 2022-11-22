@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="tariffsModel"
+            type="com.works.renta.data.database.model.TariffsModel" />
+    </data>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/txt_period"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Период"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/txt"
+        app:layout_constraintTop_toBottomOf="@+id/txt_period"
+        android:text="Введите тарифы:"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/txt_elect"
+        app:layout_constraintBaseline_toBaselineOf="@id/tarifElect"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tarifElect"
+        android:text="Электричество:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/tarifElect"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal"
+        app:FloatToString="@={tariffsModel.tarifElect}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_elect"
+        app:layout_constraintTop_toBottomOf="@+id/txt" />
+
+    <TextView
+        android:id="@+id/txt_hw"
+        app:layout_constraintBaseline_toBaselineOf="@id/tarifHotwater"
+        app:layout_constraintStart_toStartOf="@id/txt_elect"
+        android:text="Горячая вода:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/tarifHotwater"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal"
+        app:FloatToString="@={tariffsModel.tarifHotwater}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_elect"
+        app:layout_constraintTop_toBottomOf="@+id/tarifElect" />
+
+    <TextView
+        android:id="@+id/txt_сw"
+        app:layout_constraintBaseline_toBaselineOf="@id/tarifColdwater"
+        app:layout_constraintStart_toStartOf="@id/txt_elect"
+        android:text="Холодная вода:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/tarifColdwater"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal"
+        app:FloatToString="@={tariffsModel.tarifColdwater}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_elect"
+        app:layout_constraintTop_toBottomOf="@+id/tarifHotwater" />
+
+    <TextView
+        android:id="@+id/txt_tarifHotwaterForColdwater"
+        app:layout_constraintBaseline_toBaselineOf="@id/tarifHotwaterForColdwater"
+        app:layout_constraintStart_toStartOf="@id/txt_elect"
+        android:text="Нагрев воды:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/tarifHotwaterForColdwater"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal"
+        app:FloatToString="@={tariffsModel.tarifHotwaterForColdwater}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_elect"
+        app:layout_constraintTop_toBottomOf="@+id/tarifColdwater" />
+
+    <TextView
+        android:id="@+id/txt_tarifSumHotwaterColdwater"
+        app:layout_constraintBaseline_toBaselineOf="@id/tarifSumHotwaterColdwater"
+        app:layout_constraintStart_toStartOf="@id/txt_elect"
+        android:text="Водоотведение:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/tarifSumHotwaterColdwater"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal"
+        app:FloatToString="@={tariffsModel.tarifSumHotwaterColdwater}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_elect"
+        app:layout_constraintTop_toBottomOf="@+id/tarifHotwaterForColdwater" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tarifSumHotwaterColdwater"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Сохранить" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+</layout>
